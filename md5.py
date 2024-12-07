@@ -114,14 +114,16 @@ if __name__ == "__main__":
     start = time.time()
     result_custom = md5(large_input)
     custom_time = time.time() - start
+    print(f"Custom MD5 do Large Input: {result_custom}")
     print(f"Custom MD5: {custom_time:.5f} sec")
 
     # Tempo para a implementação hashlib
     start = time.time()
     result_lib = validar_md5(large_input)
     lib_time = time.time() - start
+    print(f"\nHashlib MD5 do Large Input: {result_lib}")
     print(f"Hashlib MD5: {lib_time:.5f} sec")
 
-    print(f"Diferença de tempo: {abs(custom_time - lib_time):.5f} sec")
+    print(f"\nDiferença de tempo: {abs(custom_time - lib_time):.5f} sec")
 
 
