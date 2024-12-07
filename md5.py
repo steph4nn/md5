@@ -4,14 +4,6 @@ import hashlib
 import time
 
 def md5(input):
-    """
-        Implementação do algoritmo MD5 em Python.
-        Etapas:
-        1. Preenchimento (padding) com bits até múltiplo de 512.
-        2. Divisão da mensagem em blocos de 512 bits.
-        3. Aplicação das operações de mistura.
-        4. Cálculo final do hash.
-    """
     # --------- PRÉ-PROCESSAMENTO DO INPUT --------- #
     # Converte para bytes
     if isinstance(input, str):
