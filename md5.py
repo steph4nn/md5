@@ -92,11 +92,21 @@ if __name__ == "__main__":
         return hashlib.md5(input.encode('utf-8')).hexdigest()
 
     test_input = "hello world!"
-    custom_hash = md5(test_input)
-    lib_hash = validar_md5(test_input)
-    print(f"Custom MD5:   {custom_hash}")
-    print(f"Hashlib MD5:  {lib_hash}")
-    print(f"Hashes são iguais: {custom_hash == lib_hash}")
+
+    start = time.time()
+    result_custom = md5(test_input)
+    custom_time = time.time() - start
+    print(f"Custom MD5 do '{test_input}': {result_custom}")
+    print(f"Custom MD5: {custom_time:.5f} sec")
+
+    start = time.time()
+    result_lib = validar_md5(test_input)
+    lib_time = time.time() - start
+    print(f"\nHashlib MD5 do '{test_input}': {result_lib}")
+    print(f"Hashlib MD5: {lib_time:.5f} sec")
+
+    print(f"\nHashes são iguais: {result_custom == result_lib}")
+    print(f"\nDiferença de tempo para '{test_input}': {abs(custom_time - lib_time):.5f} sec")
 
     # 2. Teste de imutabilidade
     input1 = "hello world!"
@@ -107,7 +117,7 @@ if __name__ == "__main__":
     print(f"Hashes são iguais: {md5(input1) == md5(input2)}")
 
     # 3. Avaliação de desempenho
-    large_input = "a" * 10**6
+    large_input = "a" * 10**6 # 1 milhão de caracteres "a"
     print(f"\nTeste de desempenho:")
 
     # Tempo para a implementação customizada
